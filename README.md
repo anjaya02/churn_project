@@ -6,58 +6,99 @@ This project predicts customer churn for a telecom company using machine learnin
 
 ## 📊 Dataset Overview
 
-- Dataset: [Telco Customer Churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
-- Source file: `WA_Fn-UseC_-Telco-Customer-Churn.csv`
+- Dataset: Telco Customer Churn
+- Source: [Kaggle - Telco Churn Dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
 - 7043 customer records and 21 features
 - Target variable: `Churn` (Yes/No)
 
 ---
 
-## 🧠 Machine Learning Pipeline
+## 🧠 Machine Learning Workflow
 
 1. **Exploratory Data Analysis (EDA)**
-   - Class imbalance check
-   - Insight extraction (e.g., impact of monthly charges on churn)
-
-2. **Data Cleaning**
-   - Converted `TotalCharges` to numeric
-   - Removed missing rows (~0.15%)
-
+2. **Missing value handling**
 3. **Feature Engineering**
-   - Created `tenure_group` from `tenure`
+   - Created `tenure_group`
+   - Converted `Churn` to binary
    - One-hot encoded categorical variables
-
 4. **Model Training**
-   - Used `DecisionTreeClassifier` and `RandomForestClassifier`
-   - Applied **SMOTEENN** to handle imbalance
-   - Achieved ~94% accuracy on balanced test data
-
-5. **Model Export**
-   - Final model saved as `model.sav`
-   - Trained feature list saved as `features.pkl`
-
----
-
-## 🌐 Web Application (Flask)
-
-- Built using Flask and HTML (with Bootstrap styling)
-- `index.html`: input form for user details
-- `home.html`: shows prediction result and confidence
-- Live inference using `model.sav` and aligned features
+   - Models: Decision Tree, Random Forest
+   - Imbalance handled with `SMOTEENN`
+   - Evaluation: Accuracy, Precision, Recall, F1-Score
+5. **Best Model Selection**
+   - Random Forest + SMOTEENN
+6. **Model Export**
+   - Saved as `model.sav`
+   - Feature list saved as `features.pkl`
 
 ---
 
-## 🛠 Folder Structure
+## 🌐 Flask Web App
 
-churn_project/
-├── app.py # Flask backend
+- Accepts customer details via form
+- Preprocesses data and aligns it with training features
+- Predicts churn and shows result with confidence
+- Pages:
+  - `/` - Input form
+  - `/predict` - Prediction result
+
+---
+
+## 🗂 Project Structure
+
+```
+
+churn\_project/
+├── app.py                  # Flask backend
 ├── templates/
-│ ├── index.html # Input form
-│ └── home.html # Prediction result page
-├── tel_churn.csv # Preprocessed dataset
-├── model.sav # Trained model
-├── features.pkl # List of input features
-├── model building.ipynb # Full model training notebook
-├── Churn Analysis.ipynb # EDA and preprocessing notebook
-├── first_telc.csv # Template used for dummy alignment
-└── WA_Fn-UseC_-Telco-Customer-Churn.csv # Original dataset
+│   ├── index.html          # User input form
+│   └── home.html           # Result page
+├── model.sav               # Final saved model
+├── features.pkl            # List of model input features
+├── first\_telc.csv          # Dummy row used to align input features
+├── tel\_churn.csv           # Final processed dataset
+├── WA\_Fn-UseC\_-...csv      # Original raw dataset
+├── model building.ipynb    # Notebook for model training
+└── Churn Analysis.ipynb    # Notebook for EDA & preprocessing
+
+````
+
+---
+
+## ⚙️ How to Run
+
+```bash
+# Install dependencies
+pip install flask pandas scikit-learn imbalanced-learn
+
+# Run the app
+python app.py
+
+# Open in browser
+http://127.0.0.1:5000
+````
+
+---
+
+## ✅ Features
+
+* 📊 Live prediction using web form
+* 🧠 Trained with imbalance-aware techniques
+* 📦 Fully packaged with HTML + Flask backend
+* 📁 Ready for GitHub and deployment
+
+---
+
+## 🧑‍💻 Author
+
+**Anjaya Induwara**
+Sri Lanka Telecom | Data Science & Business Support
+GitHub: [@anjaya02](https://github.com/anjaya02)
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+
