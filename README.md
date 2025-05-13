@@ -92,7 +92,7 @@ http://127.0.0.1:5000
 ## 🧑‍💻 Author
 
 **Anjaya Induwara**
-Sri Lanka Telecom | Data Science & Business Support
+Undergraduate | Informatics Institute of Technology 
 GitHub: [@anjaya02](https://github.com/anjaya02)
 
 ---
